@@ -148,7 +148,7 @@ function loadLibrary() {  //defines all functions bound to buttons with .click()
 			emailString = $('#emailInput').val();
 
 			if (emailString.length > 0) {
-				emailString = emailString.replace(/(.*?\<)/, "").replace(/\>[^>]*</g,", ").replace(/>/,"");
+				emailString = emailString.replace(/(.*?\<)/, "").replace(/\>[^>]*</g,", ").replace(/>/,"").replace(/;/g,"");
 				emailString += ',';
 			}
 			defaultEmailString = "tmobile-drm-us@google.com,trafficteam@publicis-usa.com";
