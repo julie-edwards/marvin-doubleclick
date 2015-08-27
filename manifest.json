@@ -1,0 +1,33 @@
+{
+	"name": "DC-Marvin",
+	"version": "1.0.0",
+	"manifest_version": 2,
+	"description": "Double Click Marvin",
+	"permissions": [
+		"tabs",
+		"http://*/*",
+		"storage"
+	],
+	"web_accessible_resources": [
+		"jquery.min.map",
+		"up.png",
+		"down.png"
+	],
+	"background": {
+		"scripts": ["background.js"]
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://www.google.com/doubleclick/studio/*"],
+			"css": ["style.css"],
+			"js": ["jquery.js","library.js","data.js","marvin.js"],
+			"run_at": "document_idle"
+		}
+	],
+	"browser_action": {
+		"default_icon": "marvin.png"
+	},
+	"icons": {
+		"16": "marvin.png"
+	}
+} 
