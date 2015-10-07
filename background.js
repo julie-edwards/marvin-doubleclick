@@ -1,3 +1,3 @@
-chrome.browserAction.onClicked.addListener(function (tab) {  //when you click ze bütton, toggle ze marvin.
+chrome.browserAction.onClicked.addListener(function (tab) {  //toggle marvin overlay when the marvin icon is clicked
     chrome.tabs.sendMessage(tab.id, { greeting: 'toggle marvin' }); 
 });

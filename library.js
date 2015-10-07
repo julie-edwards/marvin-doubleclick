@@ -13,6 +13,7 @@ function loadLibrary() {  //defines all functions bound to buttons with .click()
 			myAdSizeBox.text(adSizeBox.text());
 		},
 
+		//creates a group of radio buttons for the ad sizes
 		showSizeList: function(){
 			var sizes,
 				sizeArray,
@@ -30,6 +31,7 @@ function loadLibrary() {  //defines all functions bound to buttons with .click()
 			return sizes;
 		},
 
+		//show textarea for pasting in a group of emails from email application
 		showEmailInput: function(){
 			var emailInput;
 
@@ -47,6 +49,7 @@ function loadLibrary() {  //defines all functions bound to buttons with .click()
 			previewFrame = document.getElementById('cps-preview-frame');
 
 			if (previewFrame){ //check if we're on the preview page so we don't get error messages
+				//grab the preview buttons, which are in a frame within the page
 				previewButtonArray = previewFrame.contentWindow.document.getElementsByClassName('kd-button');
 				if (previewButtonArray != undefined){ //on the preview tab and frame loaded, restart the preview
 					funcs.simulateClick(previewButtonArray[1]);
@@ -86,7 +89,7 @@ function loadLibrary() {  //defines all functions bound to buttons with .click()
 				funcs.simulateClick(uploadTab);//make sure the content is focused so next click will register
 				funcs.simulateClick(uploadButton);
 			}
-			else{ //go to the tab 
+			else{ //go to the upload tab 
 				funcs.simulateClick(uploadTab);
 			}		
 		},
@@ -116,13 +119,14 @@ function loadLibrary() {  //defines all functions bound to buttons with .click()
 				campaignNameArray = campaignName.split("_");
 				sizeArray = mySize.split("x"); //[w,h]
 
+				//special regex for tmo campaign titles
 				if (campaignNameArray.length > 3 && campaignNameArray[1] === "TMO") {
 					unitName = campaignNameArray[0] + "_" + campaignNameArray[1] + "_" + campaignNameArray[2] + "_" + mySize;
 					for (i=3; i<campaignNameArray.length; i++) {
 						unitName += "_" + campaignNameArray[i];
 					}
 				}
-				else {
+				else { //generic unit name regex
 					unitName = campaignName + "_" + mySize;
 				}
 				unitName += "_HTML5";
@@ -166,7 +170,8 @@ function loadLibrary() {  //defines all functions bound to buttons with .click()
 			elem.dispatchEvent(evt);
 		},
 
-		keepTrying: function(func){ //try try again has its limits
+		//because DC uses regex and has a slight delay, we will try triggering events several times with a delay
+		keepTrying: function(func){
 			if (count < 8){ 
 				setTimeout(func, 300);
 				count++;

@@ -1,7 +1,7 @@
-function makeEle(thisEle, classes, library, marvin) { //create generic elements for buttons and info, and apply library functions
+function makeEle(thisEle, myClass, library, marvin) { //create generic elements for buttons and info, and apply library functions
 	var ele;
 
-	ele = $('<div/>', {class: classes, id: thisEle.id, text: thisEle.text});
+	ele = $('<div/>', {class: myClass, id: thisEle.id, text: thisEle.text});
 
 	if (thisEle.html && typeof library[thisEle.html] === 'function') {  //set html to the result of any matching html generation functions in the library object.
 		ele.html(library[thisEle.html](thisEle));
@@ -28,7 +28,7 @@ function makeMarvin(data, library, marvin, pageType) {
 		if (typeof thisPageType == 'string'){ //cast all page types as associative arrays
 			var obj = {};
 			obj[thisPageType]=true;
-			thisPageType=obj;
+			thisPageType = obj;
 		}
 		if (!thisPageType || thisPageType[pageType]) { //put objects on correct pages; not specified goes on all pages
 			if (thisType == 'button') { myClass = 'marvinButton'; }
@@ -51,7 +51,6 @@ $(document).ready(function() {
 	//refresh marvin every time the url changes, because ajax
 	$(window).bind('hashchange', function() {
 		$('#marvin').empty().remove();
-		console.log('urlchange');
 		startUp();
 	});
 
@@ -78,7 +77,6 @@ $(document).ready(function() {
 		}
 		if (pageType != null){ //make marvin on marvin pages only plz
 			makeMarvin(data, library, marvin, pageType);
-			console.log(pageType);
 		}	
 	};
 	

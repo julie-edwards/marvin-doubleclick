@@ -9,13 +9,13 @@ function loadData() {
 
 		newAd: { //show available sizes, fill form when one is selected
 			html: 'showSizeList',
-			func: 'fillFormNew', //when a size is clicked
+			func: 'fillFormNew', //when a size is clicked, populate new ad form
 			id: 'sizeList',
 			type: 'info',
 			pageType: 'newAdPage'
 		},
 
-		showEmailInput: {
+		showEmailInput: {//display email input field
 			html: 'showEmailInput',
 			id: 'showEmailInput',
 			type: 'info',
@@ -56,7 +56,7 @@ function loadData() {
 			}
 		},
 
-		fillFormPublish: {
+		fillFormPublish: {//when update is clicked, populate publish form
 			func: 'fillFormPublish',
 			text: 'Update',
 			type: 'button',
@@ -64,7 +64,7 @@ function loadData() {
 		},
 
 
-		hideMarvin: {			
+		hideMarvin: { //close button	
 			func: 'toggleMarvin',
 			id: 'hideMarvin',
 			type: 'button',
